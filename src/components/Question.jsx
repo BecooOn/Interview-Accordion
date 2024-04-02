@@ -3,16 +3,30 @@ import { arrowdown, arrowup } from "../helpers/icons";
 
 const Question = ({ question }) => {
   const [showAnswer, setShowAnswer] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const handleArrow = () => {
     setShowAnswer(!showAnswer);
   };
+  const handleMouseOver = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovered(false);
+  };
   return (
-    <div className="card m-2 p-2">
-      <h2>
-        {question.question}
-        <span className="float-end" onClick={handleArrow}>{showAnswer ? arrowdown : arrowup}</span>
+    <div
+      className={`card m-auto mt-3 p-2 w-50 ${isHovered ? "hovered" : ""}`}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+    >
+      <h2 className="text-primary">
+        {question.id}.{question.question}
+        <span type="button" className="float-end" onClick={handleArrow}>
+          {showAnswer ? arrowdown : arrowup}
+        </span>
       </h2>
-      <p>{question.answer}</p>
+      {showAnswer && <p className="fs-5">{question.answer}</p>}
     </div>
   );
 };

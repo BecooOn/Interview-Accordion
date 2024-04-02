@@ -10,3 +10,10 @@
   padding: 0;
   font-family: "Anta", sans-serif;
 }
+.hovered {
+  background-color: #e0e0e0;
+}
+.question-part{
+  min-height: 100vh;
+  background-color: antiquewhite;
+}
